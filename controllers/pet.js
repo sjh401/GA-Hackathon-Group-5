@@ -5,6 +5,7 @@ export const postPet = async (req, res) => {
     let user = await User.findById(req.user);
     const pet = new Pet(req.body);
     pet.owner = req.user;
+
     await pet.save();
     user.pets.push(pet._id);
     await user.save();
@@ -18,7 +19,7 @@ export const putPet = async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req;
-    console.log(req.body);
+
     const pet = await Pet.findByIdAndUpdate(id, body, { new: true });
     res.send(pet);
   } catch (e) {
@@ -48,7 +49,6 @@ export const getPet = async (req, res) => {
     } else {
       res.status(404).json({ error: "pet not found." });
     }
-    res.json(pet);
   } catch (e) {
     res.status(404).json({ error: e.message });
   }
@@ -56,6 +56,7 @@ export const getPet = async (req, res) => {
 
 export const getPets = async (req, res) => {
   try {
+
     let user = await User.findById(req.user).populate("pets");
     const pets = user.pets;
     res.json(pets);
