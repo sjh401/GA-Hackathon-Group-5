@@ -3,16 +3,12 @@ const Schema = mongoose.Schema;
 
 const PetSchema = new Schema(
   {
-    id: {
-      type: String,
-      unique: true,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
     },
-    appointments: [],
+    appointments: [{ type: Schema.Types.ObjectId, ref: "Appointment" }],
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );
