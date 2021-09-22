@@ -88,7 +88,7 @@ export const getUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   try {
     const {id} = req.params
-    const user = await User.findById(id).populate('posts').populate('threadId')
+    const user = await User.findById(id)
     if (user) {
       res.json(user)
     } else {
