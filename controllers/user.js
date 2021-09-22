@@ -20,7 +20,6 @@ export const signUp = async (req, res) => {
       latitude: zipcodeData.latitude,
       longitude: zipcodeData.longitude,
     };
-    console.log(location);
 
     const user = new User({
       email,
