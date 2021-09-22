@@ -12,9 +12,9 @@ export default function CardHome(props) {
                 <h3>Services</h3>
                 <div>
                     {/* map through services? */}
-                    <Link to='/services'><div>Boarding</div></Link>
-                    <Link to='/services'><div>Grooming</div></Link>
-                    <Link to='/services'><div>Veterinarian</div></Link>
+                    <Link to='/services' onClick={(e)=>setService("Boarding")}><div>Boarding</div></Link>
+                    <Link to='/services' onClick={(e)=>setService("Grooming")}><div>Grooming</div></Link>
+                    <Link to='/services' onClick={(e)=>setService("Veterinarian")}><div>Veterinarian</div></Link>
                 </div>
             </div>
             <div>

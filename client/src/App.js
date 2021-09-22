@@ -7,6 +7,7 @@ import SignIn from './screens/user/SignIn';
 import { registerUser, loginUser, removeToken } from './services/auth';
 import Home from './screens/home/Home';
 import Services from './screens/services/Services';
+import Schedule from './screens/schedule/Schedule';
 
 function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
@@ -43,9 +44,16 @@ function App() {
           toggle={toggle}
         >
           <Switch>
-            <Route path="/sign-up">
-              <SignUp 
-                handleRegister={handleRegister}
+            <Route path="/schedule"> 
+              <Schedule 
+                currentUser={currentUser}
+              />
+            </Route>
+            <Route path="/services">
+              <Services 
+                currentUser={currentUser}
+                toggle={toggle}
+                service={service}
               />
             </Route>
             <Route path="/sign-in">
@@ -53,10 +61,9 @@ function App() {
                 handleLogin={handleLogin}
               />
             </Route>
-            <Route path="/services">
-              <Services 
-                currentUser={currentUser}
-                toggle={toggle}
+            <Route path="/sign-up">
+              <SignUp 
+                handleRegister={handleRegister}
               />
             </Route>
             <Route>
