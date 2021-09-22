@@ -28,6 +28,7 @@
     "mongoose": "^6.0.7",
     "morgan": "^1.10.0",
     "node": "^16.9.1",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "rowdy-logger": "^1.0.2"
   }
 }
