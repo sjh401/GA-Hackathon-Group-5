@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 40vh;
+    width: 100vw;
+}
+
+main {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 60vh;
+    width: 100vw;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 10vh;
+    width: 100vw;
+}
