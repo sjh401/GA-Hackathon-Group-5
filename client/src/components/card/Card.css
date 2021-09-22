@@ -20,3 +20,12 @@
     border: black solid 2px;
     border-radius: 5px;
 }
+
+.div-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 100vw;
+    overflow: auto;
+}
