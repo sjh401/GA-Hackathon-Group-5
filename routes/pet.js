@@ -10,6 +10,7 @@ import {
 
 const router = Router();
 
+
 router.post("/pets", restrict, postPet);
 router.get("/pets/:id", restrict, getPet);
 router.get("/pets", restrict, getPets);
