@@ -6,10 +6,12 @@ import SignUp from './screens/user/SignUp';
 import SignIn from './screens/user/SignIn';
 import { registerUser, loginUser, removeToken } from './services/auth';
 import Home from './screens/home/Home';
+import Services from './screens/services/Services';
 
 function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
   const [ toggle, setToggle ] = useState(false)
+  const [ service, setService ] = useState("")
   const history = useHistory();
 
   console.log(currentUser)
@@ -51,11 +53,19 @@ function App() {
                 handleLogin={handleLogin}
               />
             </Route>
+            <Route path="/services">
+              <Services 
+                currentUser={currentUser}
+                toggle={toggle}
+              />
+            </Route>
             <Route>
               <Home 
                 currentUser={currentUser}
                 setToggle={setToggle}
                 toggle={toggle}
+                setService={setService}
+                service={service}
               />
             </Route>
           </Switch>
