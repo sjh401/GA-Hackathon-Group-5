@@ -7,6 +7,7 @@ import {
   putPet,
   deletePet,
 } from "../controllers/pet.js";
+
 const router = Router();
 
 router.post("/addpet", restrict, postPet);
