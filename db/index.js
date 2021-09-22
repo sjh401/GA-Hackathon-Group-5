@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const MONGODB_URI = process.env.PROD_MONGODB || "mongodb://127.0.0.1:27017/forumtopiaDatabase"
+const MONGODB_URI = process.env.PROD_MONGODB || "mongodb://127.0.0.1:27017/petcareDatabase"
 
 // toggle off if not debugging
 mongoose.set("debug", false)
