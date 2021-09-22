@@ -10,10 +10,10 @@ import {
 
 const router = Router();
 
-router.post("/addpet", restrict, postPet);
-router.post("/pet", restrict, getPet);
-router.post("/pets", restrict, getPets);
-router.post("/updatepet", restrict, putPet);
-router.post("/deletePet", restrict, deletePet);
+router.post("/pets", restrict, postPet);
+router.get("/pets/:id", restrict, getPet);
+router.get("/pets", restrict, getPets);
+router.put("/pets/:id", restrict, putPet);
+router.delete("/pets/:id", restrict, deletePet);
 
 export default router;

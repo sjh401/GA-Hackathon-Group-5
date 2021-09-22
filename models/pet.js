@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const PetSchema = new Schema(
   {
-    id: {
-      type: String,
-      unique: true,
-      required: true,
-    },
+    // id: {
+    //   type: String,
+    //   unique: true,
+    //   required: true,
+    // },
     name: {
       type: String,
       required: true,
