@@ -16,6 +16,6 @@ router.get("/appointments/:petID", getAppointments);
 router.get("/appointment/:id", getAppointment);
 router.post("/appointment/:petID", postAppointment);
 router.put("/appointment/:id", restrict, putAppointment);
-router.delete("/appointment/:id", restrict, deleteAppointment);
+router.delete("/appointment/:id/:petID", restrict, deleteAppointment);
 
 export default router;

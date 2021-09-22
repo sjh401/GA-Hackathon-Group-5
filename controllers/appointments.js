@@ -56,8 +56,14 @@ export const putAppointment = async (req, res) => {
 
 export const deleteAppointment = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id, petID } = req.params;
+    let pet = await Pet.findById(petID);
+    console.log(pet);
+    pet.appointments = pet.appointments.filter(
+      (appointment) => appointment != id
+    );
     const appointment = await Appointment.findByIdAndDelete(id);
+    pet.save();
     res.send(appointment);
   } catch (e) {
     res.status(404).json({ error: e.message });
