@@ -4,7 +4,7 @@ import Header from './Header'
 import './Layout.css'
 
 export default function Layout(props) {
-    const { handleLogout } = props;
+    const { handleLogout, currentUser, toggle } = props;
     return (
         <>
             <Header
@@ -13,7 +13,10 @@ export default function Layout(props) {
             <main className="main">
                 {props.children}
             </main>
-            <Footer/>
+            <Footer
+                currentUser={currentUser}
+                toggle={toggle}
+            />
         </>
     )
 }

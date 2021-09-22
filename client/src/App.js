@@ -14,7 +14,6 @@ function App() {
 
   console.log(currentUser)
   const handleRegister = async (registerData) => {
-    console.log("this is register data " + registerData)
     const userData = await registerUser(registerData);
     setCurrentUser(userData);
     history.push("/");
@@ -23,7 +22,6 @@ function App() {
   const handleLogin = async (loginData) => {
     console.log(loginData)
     const userData = await loginUser(loginData);
-    console.log(userData)
     setCurrentUser(userData);
     history.push('/');
   }
@@ -39,6 +37,8 @@ function App() {
       <div className="App">
         <Layout
           handleLogout={handleLogout}
+          currentUser={currentUser}
+          toggle={toggle}
         >
           <Switch>
             <Route path="/sign-up">
