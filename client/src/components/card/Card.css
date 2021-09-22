@@ -1,0 +1,22 @@
+.h3-cardhome {
+    text-align: left;
+    margin: 10px 0 0 10px;
+}
+.div-row {
+    display: flex;
+    flex-flow: row;
+    width: 100vw;
+    overflow: auto;
+}
+
+.row-inner {
+    height: 30vmin;
+    width: 30vmin;
+    min-height: 100px;
+    min-width: 100px;
+    margin: 10px;
+    color:black;
+    text-decoration: none;
+    border: black solid 2px;
+    border-radius: 5px;
+}

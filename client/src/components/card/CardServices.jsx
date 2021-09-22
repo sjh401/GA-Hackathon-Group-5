@@ -4,7 +4,7 @@ export default function CardServices(props) {
     const { currentUser, toggle } = props;
     return (
         <div>
-            mapping through services
+            mapping through providers
         </div>
     )
 }

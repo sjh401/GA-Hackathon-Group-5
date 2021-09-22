@@ -1,4 +1,6 @@
 header {
+    background-image: url("https://media.istockphoto.com/vectors/vector-border-with-cute-different-breeds-of-dogs-in-cartoon-style-on-vector-id1326160031?b=1&k=20&m=1326160031&s=170667a&w=0&h=P5Or0UN8F95afmRsJQOp-adoANcAW03su8o-fk3G6CE=");
+    background-origin: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +26,7 @@ footer {
     align-items: center;
     height: 10vh;
     width: 100vw;
-    background-color: blue;
+    background-color: #fff;
 }
 
 .link-noformat {

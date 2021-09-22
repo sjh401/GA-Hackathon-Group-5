@@ -12,6 +12,10 @@ import FilterServices from '../../components/card/FilterServices';
 export default function Services(props) {
     const { currentUser, toggle, service } = props;
     const [ popup, setPopup ] = useState(false)
+
+
+    // pull from api or state and use service prop to filter type of business
+    
     
     return (
         <div className="div-services">
