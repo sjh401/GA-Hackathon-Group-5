@@ -7,12 +7,12 @@ const AppointmentSchema = new Schema(
       type: String,
       required: true,
     },
-    pet_name: {
-      type: String,
-      required: true,
+    date: {
+      type: Date,
+      require: true,
     },
     location: {
-      type: String,
+      type: Array,
       require: true,
     },
     appointment_holder: { type: Schema.Types.ObjectId, ref: "Pet" },

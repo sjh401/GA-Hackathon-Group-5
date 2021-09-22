@@ -23,6 +23,10 @@ const UserSchema = new Schema(
       default: Date.now(),
     },
     pets: [{ type: Schema.Types.ObjectId, ref: "Pet" }],
+    location: {
+      type: Object,
+      required: true,
+    },
   },
   { timestamps: true }
 );
