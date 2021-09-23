@@ -1,9 +1,14 @@
 export default function Header(props) {
-    const { handleLogout } = props;
+    const { handleLogout, currentUser } = props;
 
     return (
         <header>
-            <button onClick={handleLogout}>Logout</button>
+            { currentUser &&
+            <button 
+                onClick={handleLogout}
+                className="logout"
+            >Logout</button>
+            }
         </header>
     )
 }

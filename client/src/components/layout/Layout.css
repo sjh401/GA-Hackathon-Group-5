@@ -2,8 +2,8 @@ header {
     background-image: url("https://media.istockphoto.com/vectors/vector-border-with-cute-different-breeds-of-dogs-in-cartoon-style-on-vector-id1326160031?b=1&k=20&m=1326160031&s=170667a&w=0&h=P5Or0UN8F95afmRsJQOp-adoANcAW03su8o-fk3G6CE=");
     background-origin: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     background-color: blue;
     height: 30vh;
     width: 100vw;
@@ -13,7 +13,7 @@ main {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #E5E5E5;
     height: 70vh;
     width: 100vw;
     overflow: auto;
@@ -26,10 +26,22 @@ footer {
     align-items: center;
     height: 10vh;
     width: 100vw;
-    background-color: #fff;
+    background-color: #E5E5E5;
 }
 
 .link-noformat {
+    width: 30vw;
+    margin: 0 2.5vw;
+    padding: 0 2.5vw;
     text-decoration: none;
+    text-align: center;
     color: black;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout {
+    margin: 10px;
 }

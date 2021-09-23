@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
 
 import { makeStyles } from '@mui/styles';
-import MenuIcon from '@mui/icons-material/Menu';
+import TuneIcon from '@mui/icons-material/Tune';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Fade from '@mui/material/Fade'
 import Checkbox from '@mui/material/Checkbox';
 
-const HamburgerCSS = makeStyles((theme) => ({
-    button: {
-        backgroundColor: '#000',
-        margin: '2px',
-        '&:hover': {
-            backgroundColor: '#fff',
-            color: '#000'
-        },
-    },
-    link: {
-        color: '#000',
-        textDecoration: 'none',
-    },
-    linkBar: {
-        color: '#000',
-        marginRight: 20,
-    }
-}));
-
 export default function Hamburger(props) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    const HamburgerCSS = makeStyles((theme) => ({
+        button: {
+            backgroundColor: '#000',
+            margin: '2px',
+            '&:hover': {
+                backgroundColor: '#fff',
+                color: '#000'
+            },
+        },
+        link: {
+            color: '#000',
+            textDecoration: 'none',
+        },
+        linkBar: {
+            color: '#000',
+            marginRight: 20,
+        }
+    }));
+    
     const classes = HamburgerCSS();
 
     const handleClick = (e) => {
@@ -41,14 +42,14 @@ export default function Hamburger(props) {
 
     return (
         <div className={classes.linkBar}>
-            <MenuIcon
+            <TuneIcon
                 aria-label="more"
                 aria-controls="fade-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
             >
             <MoreVertIcon className="menu-icon" />
-            </MenuIcon>
+            </TuneIcon>
             <Menu
                 id="long-menu"
                 anchorEl={anchorEl}
@@ -60,16 +61,28 @@ export default function Hamburger(props) {
                 PaperProps={{
                     style: {
                     maxHeight: 450,
-                    width: '15vw',
-                    minWidth: 250,
-                    backgroundColor: '#fff',
-                    color: '#000',
+                    width: '10vw',
+                    minWidth: 175,
                 },}}
                 >
-                <MenuItem >
+                <MenuItem 
+                    style={{display: 'flex',
+                    flexFlow: 'row',
+                    justifyContent: 'space-between'}}
+                >
+                    <div>
+                        Open Now
+                    </div>
                     <Checkbox />
                 </MenuItem>
-                <MenuItem >
+                <MenuItem 
+                    style={{display: 'flex',
+                    flexFlow: 'row',
+                    justifyContent: 'space-between'}}
+                >
+                    <div>
+                        4 Stars +
+                    </div>
                     <Checkbox />
                 </MenuItem>
             </Menu>
