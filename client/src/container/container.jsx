@@ -161,6 +161,7 @@ export default function Container(props) {
                         toggle={toggle}
                         setService={setService}
                         service={service}
+                        appointments={appointments}
                     />
                 </Route>
             </Switch>

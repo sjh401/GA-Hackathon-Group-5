@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import "./Card.css"
 
 export default function CardHome(props) {
-    const { setService } = props;
+    const { setService, appointments } = props;
 
     return (
         <div className="div-cardhome">
@@ -24,11 +24,24 @@ export default function CardHome(props) {
             <div>
                 <h3 className="h3-cardhome">Upcoming Appointments</h3>
                 <div className="div-row">
-                    {/* map through user appointments */}
-                    <div className="row-inner border-pink">1</div>
-                    <div className="row-inner border-pink">2</div>
-                    <div className="row-inner border-pink">3</div>
-                    <div className="row-inner border-pink">4</div>
+                    {appointments ? appointments.map(appointment => {
+                        return (
+                            <div 
+                                className="row-inner border-pink appointment"
+                                key={appointment._id}
+                            >
+                                <div>
+                                    {appointment.name}
+                                </div>
+                                <div>
+                                    {appointment.date}
+                                </div>
+                                <div>
+                                    {appointment.service}
+                                </div>
+                            </div>
+                        )
+                    }): <></>}
                 </div>
             </div>
         </div>

@@ -54,3 +54,17 @@
 .border-pink:hover {
     border: solid #ff7777 2px;
 }
+
+.appointment {
+    font-size: smaller;
+    display: flex;
+    flex-flow: column;
+}
+
+@media only screen and (max-width: 500px) {
+    .row-inner {
+        border: #fff solid 2px;
+        background-color: #ff7777;
+        color: #fff;
+    }
+}

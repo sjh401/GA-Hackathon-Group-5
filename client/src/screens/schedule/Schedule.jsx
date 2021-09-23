@@ -83,6 +83,8 @@ export default function Schedule(props) {
     if (service === "Boarding") {
         showComponent =  <ScheduleBoarding />
     }
+    const time = new Date().getTime()
+    console.log(time)
     return (
         <>
             <div 
@@ -109,10 +111,10 @@ export default function Schedule(props) {
                 value={name}
                 onChange={handleChange}/>
             <br/>
-            <TextField 
+                <TextField 
                 required 
                 id="outlined-basic" 
-                type="date"
+                type="datetime-local"
                 label="Date" 
                 name="date"
                 variant="outlined"
@@ -136,15 +138,6 @@ export default function Schedule(props) {
                 }): ""}
             </Select>
             <br/>
-            {/* <TextField 
-                required 
-                id="outlined-basic" 
-                label="Location"
-                name="location"
-                variant="outlined" 
-                value={location}
-                onChange={handleChange}/>
-            <br/> */}
             <TextField 
                 required 
                 id="outlined-basic" 
@@ -168,6 +161,7 @@ export default function Schedule(props) {
                 className={(toggle === false) ? "none": "div-schedule-hidden"}
             >
                 <div>
+                    <img src="https://i.imgur.com/pFuc46U.png" className="confirmed-image"/>
                     <h3>Your appointment is confirmed!!</h3>  
                     <div>
                         The appointment has been added to your calendar.

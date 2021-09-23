@@ -30,3 +30,8 @@
     text-decoration: none;
     color: #fff;
 }
+
+.confirmed-image {
+    height: 30vmin;
+    width: 30vmin;
+}
