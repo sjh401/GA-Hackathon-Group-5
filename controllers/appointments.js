@@ -33,7 +33,7 @@ export const getAppointment = async (req, res) => {
 
 export const postAppointment = async (req, res) => {
   try {
-    let pet = await Pet.findById(req.params.petID);
+    let pet = await Pet.findById(req.body.appointment_holder);
     const appointment = new Appointment(req.body);
     pet.appointments.push(appointment._id);
     await appointment.save();
