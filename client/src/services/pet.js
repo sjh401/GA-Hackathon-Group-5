@@ -20,7 +20,9 @@ export const getPet = async (id) => {
 
 export const postPet = async (createdData) => {
     try {
+        console.log(createdData)
         let res = await api.post("/api/pets", createdData);
+        console.log(res)
         return res.data;
     } catch (e) {
         return ({ errors: e });

@@ -2,11 +2,14 @@ import Pet from "../models/pet.js";
 import User from "../models/user.js";
 export const postPet = async (req, res) => {
   try {
-    let user = await User.findById(req.user);
+
     const pet = new Pet(req.body);
+
     pet.owner = req.user;
+    const user = await User.findById(req.user);
 
     await pet.save();
+
     user.pets.push(pet._id);
     await user.save();
     res.status(201).json(pet);
@@ -56,9 +59,6 @@ export const getPet = async (req, res) => {
 
 export const getPets = async (req, res) => {
   try {
-    // console.log(req.user)
-    // let user = await User.findById(req.user).populate("pets");
-    // const pets = user.pets;
     const pets = await Pet.find()
     res.json(pets);
   } catch (e) {

@@ -6,7 +6,7 @@ import CardHome from '../../components/card/CardHome';
 
 export default function Home(props) {
     const { currentUser, setToggle, toggle, service, setService } = props;
-    console.log(toggle)
+
     return (
         <div className="div-home">
             { !currentUser && toggle === false &&
