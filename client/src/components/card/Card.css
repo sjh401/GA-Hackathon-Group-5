@@ -22,6 +22,9 @@
 }
 
 .row-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30vmin;
     width: 30vmin;
     min-height: 100px;

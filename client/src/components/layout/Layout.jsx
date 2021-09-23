@@ -9,6 +9,7 @@ export default function Layout(props) {
         <>
             <Header
                 handleLogout={handleLogout}
+                currentUser={currentUser}
             />
             <main className="main">
                 {props.children}
