@@ -48,4 +48,12 @@ export default function Container(props) {
         fetchPet()
     }
     )
+
+    const addPet = async (newItem) => {
+        const newPet = await postPet(newItem)
+    }
+
+    const addAppointment = async (newItem) => {
+        const newAppointment = await postAppointment(newItem)
+    }
 }
