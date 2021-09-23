@@ -4,9 +4,10 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
 import Schedule from "../screens/schedule"
+import Businesses from "../screens/nearby/Businesses";
 import Service from "../screens/services/Services"
 
-import { getAppointment, getAppointments, postAppointment, putAppointment, deleteAppointment } from "../../../controllers/appointments";
+import { getAppointment, getAppointments, postAppointment, putAppointment, deleteAppointment, findBoarding, findGroomer, findVet } from "../../../controllers/appointments";
 import { getPets, getPet, postPet, putPet, deletePet } from "../../../controllers/pet"
 
 export default function Container(props) {
@@ -14,6 +15,9 @@ export default function Container(props) {
     const [pet, setPet] = useState("")
     const [appointments, setAppointments] = useState([])
     const [appointment, setAppointment] = useState("")
+    const [grooming, setGrooming] = useState([])
+    const [vet, setVets] = useState([])
+    const [boarding, setBoarding] = useState([])
     const { currentUser } = props
     const history = useHistory()
 
@@ -24,6 +28,30 @@ export default function Container(props) {
         }
         fetchPets();
     }, [])
+
+    useEffect(() => {
+        const fetchGrooming = async () => {
+            const fetchedGrooming = await findGroomer();
+            setGrooming(fetchedGrooming)
+        }
+        fetchGrooming();
+    },[])
+
+    useEffect(() => {
+        const fetchVet = async () => {
+            const fetchedVet = await findVet();
+            setVets(fetchedVet)
+        }
+        fetchVet();
+    },[])
+
+    useEffect(() => {
+        const fetchBoarding = async () => {
+            const fetchedBoarding = await findBoarding();
+            setBoarding(fetchedBoarding)
+        }
+        fetchBoarding();
+    },[])
 
     useEffect(() => {
         const fetchAppointments = async () => {
