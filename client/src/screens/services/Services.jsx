@@ -30,7 +30,7 @@ export default function Services(props) {
     
     return (
         <div className="div-services">
-            <div>{location.zip}</div>
+            <div>{location?.zip}</div>
             <Link to='/users'>Change Location</Link>
             <div className="services-filter">
                 <ClearIcon 

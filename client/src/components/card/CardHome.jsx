@@ -11,13 +11,13 @@ export default function CardHome(props) {
     const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
 
     useEffect(() =>{
-        if(!pets.length){
-            setUserAppointments([])
+        if(pets?.length){
+            setUserAppointments(appointments
+                // pets?.find(pet => 
+                // appointment.appoitnment_holder === currentUser?.userId)
+                )
         }else {
-        setUserAppointments(appointments
-            // pets?.find(pet => 
-            // appointment.appoitnment_holder === currentUser?.userId)
-            )
+            setUserAppointments([])
         }
     },[currentUser, pets]);
 
@@ -25,7 +25,7 @@ export default function CardHome(props) {
     return (
         <div className="div-cardhome">
             <div>
-                Find services in: {location.zip}
+                Find services in: {location?.zip}
             </div>
             <Link to='/users/location'>Change Location</Link>
             <div>

@@ -44,7 +44,7 @@ export default function Schedule(props) {
     const [ formData, setFormData ] = useState({
         name: '',
         date: '',
-        location: userLocation.zip,
+        location: userLocation?.zip,
         appointment_holder: '',
         service: ''
     });
