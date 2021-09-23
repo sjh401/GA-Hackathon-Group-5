@@ -38,7 +38,7 @@ export const signUp = async (req, res) => {
 
     const token = jwt.sign(payload, TOKEN_KEY);
 
-    res.status(201).json({ userId: user._id, token });
+    res.status(201).json({ userId: user._id, username: user.username, location: user.location, token });
   } catch (e) {
     res.status(404).json({ error: e.message });
   }
@@ -48,7 +48,7 @@ export const signIn = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username }).select(
-      "email username password_digest"
+      "email username password_digest location"
     );
 
     if (await bcrypt.compare(password, user.password_digest)) {
@@ -60,7 +60,7 @@ export const signIn = async (req, res) => {
       };
       const token = jwt.sign(payload, TOKEN_KEY);
 
-      res.status(201).json({ userId: user._id, token });
+      res.status(201).json({ userId: user._id, username: user.username, location: user.location, token });
     } else {
       res.status(401).json({ error: "Invalid Credentials" });
     }

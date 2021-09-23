@@ -1,19 +1,25 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+
 import "./User.css"
 
 export default function UserAccount(props) {
     const [ userPets, setUserPets ] = useState();
 
+
+    const zipcodes = require('zipcodes');
+
+
     const { pets, currentUser } = props;
     useEffect(() =>{
         setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
-    },[currentUser, pets])
+    },[currentUser, pets]);
+    const location = zipcodes.lookupByCoords(currentUser.location.latitude, currentUser.location.longitude);
 
     return (
         <div className="div-user">
-            <h3>username</h3>
-            <div>Location</div>
+            <h3>{currentUser.username}</h3>
+            <div>{location.zip}</div>
             <Link to="/pets">
                 Add a pet
             </Link>
