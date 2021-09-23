@@ -1,14 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 import Appointment from "../models/appointment.js";
 import Pet from "../models/pet.js";
-
-export const getAllAppointments = async (req, res) => {
-  try {
-    let appointments = await Appointment.find()
-    res.json(appointments);
-  } catch (e) {
-    res.status(404).json({ error: e.message });
-  }
-};
+import User from "../models/user.js";
+import axios from "axios";
 
 export const getAppointments = async (req, res) => {
   try {
@@ -74,6 +69,61 @@ export const deleteAppointment = async (req, res) => {
     const appointment = await Appointment.findByIdAndDelete(id);
     pet.save();
     res.send(appointment);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};
+
+export const findGroomer = async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    let config = {
+      headers: {
+        Authorization: `BEARER ${process.env.api_key}`,
+      },
+    };
+    let url = `http://api.yelp.com/v3/businesses/search?term=pet_groomer&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
+    let results = await axios.get(url, config);
+    res.send(results.data);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};
+export const findVet = async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    let config = {
+      headers: {
+        Authorization: `BEARER ${process.env.api_key}`,
+      },
+    };
+    let url = `http://api.yelp.com/v3/businesses/search?term=vet&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
+    let results = await axios.get(url, config);
+    res.send(results.data);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};
+export const findBoarding = async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    let config = {
+      headers: {
+        Authorization: `BEARER ${process.env.api_key}`,
+      },
+    };
+    let url = `http://api.yelp.com/v3/businesses/search?term=pet_boarding&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
+    let results = await axios.get(url, config);
+    res.send(results.data);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};
+
+export const getAllAppointments = async (req, res) => {
+  try {
+    let appointments = await Appointment.find()
+    res.json(appointments);
   } catch (e) {
     res.status(404).json({ error: e.message });
   }
