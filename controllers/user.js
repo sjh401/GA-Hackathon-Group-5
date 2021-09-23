@@ -116,7 +116,7 @@ export const updateUser = async (req, res) => {
       latitude: zipcodeData.latitude,
       longitude: zipcodeData.longitude,
     };
-
+    await user.save()
     if (user) {
       res.json(user);
     } else {

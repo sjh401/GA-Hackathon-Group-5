@@ -37,28 +37,13 @@ export default function Container(props) {
         fetchAppointments();
     }, [])
 
-    // useEffect(() => {
-    //     const fetchAppointment = async () => {
-    //         const fetchedAppointment = await getAppointment()
-    //         setAppointment(fetchedAppointment)
-    //     }
-    //     fetchAppointment();
-    // }, [])
-
-    // useEffect(() => {
-    //     const fetchPet = async (id) => {
-    //         const fetchedPet = await getPet();
-    //         setPet(fetchedPet)
-    //     }
-    //     fetchPet()
-    // }, []
-    // )
     const addPet = async (newItem) => {
         const newPet = await postPet(newItem);
         setPets(prevPets => ([
             ...prevPets,
             newPet
         ]))
+        history.push('/account')
     }
 
     const addAppointment = async (newItem) => {
@@ -92,18 +77,9 @@ export default function Container(props) {
         setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment.id !== Number(appointment_id)))
     }
 
-    console.log(appointments)
-    console.log(pets)
-
-
     return (
         <>
             <Switch>
-                <Route path="/pet/add">
-                    <CreatePet
-                    addPet={addPet} 
-                    />
-                </Route>
                 <Route path="/pet/edit/:pet_id">
                     <EditPet
                     updatePet={updatePet}
@@ -131,6 +107,11 @@ export default function Container(props) {
                     <UserAccount 
                     currentUser={currentUser}
                     toggle={toggle}
+                    />
+                </Route>
+                <Route path="/pets">
+                    <CreatePet 
+                        addPet={addPet}
                     />
                 </Route>
                 <Route path="/">
