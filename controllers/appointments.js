@@ -98,6 +98,7 @@ export const findVet = async (req, res) => {
       },
     };
     let url = `http://api.yelp.com/v3/businesses/search?term=vet&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
+    console.log(url);
     let results = await axios.get(url, config);
     res.send(results.data);
   } catch (e) {
@@ -113,6 +114,7 @@ export const findBoarding = async (req, res) => {
       },
     };
     let url = `http://api.yelp.com/v3/businesses/search?term=pet_boarding&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
+
     let results = await axios.get(url, config);
     res.send(results.data);
   } catch (e) {
@@ -122,7 +124,7 @@ export const findBoarding = async (req, res) => {
 
 export const getAllAppointments = async (req, res) => {
   try {
-    let appointments = await Appointment.find()
+    let appointments = await Appointment.find();
     res.json(appointments);
   } catch (e) {
     res.status(404).json({ error: e.message });
