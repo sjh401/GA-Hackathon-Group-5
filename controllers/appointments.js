@@ -1,6 +1,15 @@
 import Appointment from "../models/appointment.js";
 import Pet from "../models/pet.js";
 
+export const getAllAppointments = async (req, res) => {
+  try {
+    let appointments = await Appointment.find()
+    res.json(appointments);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};
+
 export const getAppointments = async (req, res) => {
   try {
     let appointments = await Pet.findById(req.params.petID).populate(

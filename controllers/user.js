@@ -109,7 +109,14 @@ export const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req;
-    const user = await User.findById(id, body, { new: true });
+    const user = await User.findByIdAndUpdate(id, body, { new: true });
+    let zipcode = req.body.location;
+    let zipcodeData = zipcodes.lookup(zipcode);
+    user.location = {
+      latitude: zipcodeData.latitude,
+      longitude: zipcodeData.longitude,
+    };
+
     if (user) {
       res.json(user);
     } else {

@@ -1,8 +1,17 @@
 import api from "./api-config"
 
-export const getAppointments = async () => {
+export const getAllAppointments = async (id) => {
     try {
-        let res = await api.get("/appointment");
+        let res = await api.get(`/api/appointments`);
+        return res.data;
+    } catch (e) {
+        return ({ errors: e });
+    };
+}; 
+
+export const getAppointments = async (id) => {
+    try {
+        let res = await api.get(`/api/appointments/${id}`);
         return res.data;
     } catch (e) {
         return ({ errors: e });
@@ -11,7 +20,7 @@ export const getAppointments = async () => {
 
 export const getAppointment = async (id) => {
     try {
-        let res = await api.get(`/appointment${id}`);
+        let res = await api.get(`/api/appointment/${id}`);
         return res.data;
     } catch (e) {
         return ({ errors: e });
@@ -20,7 +29,7 @@ export const getAppointment = async (id) => {
 
 export const postAppointment = async (createdData) => {
     try {
-        let res = await api.post("/appointment", createdData);
+        let res = await api.post("/api/appointment", createdData);
         return res.data;
     } catch (e) {
         return ({ errors: e });
@@ -29,7 +38,7 @@ export const postAppointment = async (createdData) => {
 
 export const putAppointment = async (id, updatedData) => {
     try {
-        let res = await api.put(`/appointment/${id}`, updatedData);
+        let res = await api.put(`/api/appointment/${id}`, updatedData);
         return res.data;
     } catch (e) {
         return ({ errors: e });
@@ -38,7 +47,7 @@ export const putAppointment = async (id, updatedData) => {
 
 export const deleteAppointment = async (id) => {
     try {
-        let res = await api.delete(`/appointment/${id}`);
+        let res = await api.delete(`/api/appointment/${id}`);
         return res.data;
     } catch (e) {
         return ({ errors: e });
