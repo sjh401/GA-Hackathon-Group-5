@@ -45,18 +45,12 @@
     width: 100vw;
     overflow: auto;
 }
-
-.primary {
+.hover-pink:hover {
     background-color: #ff7777;
     color: #fff;
+    border: solid #fff 2px;
 }
 
-.primary:hover {
-    background-color: #4FA8FC;
-    color: #fff;
-}
-
-.secondary:hover {
-    background-color: #4FA8FC;
-    color: #fff;
+.border-pink:hover {
+    border: solid #ff7777 2px;
 }

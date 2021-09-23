@@ -6,6 +6,8 @@ export default function Header(props) {
     const PrimaryButton = styled(Button)(({ theme }) => ({
         color: '#fff',
         backgroundColor: '#ff7777',
+        margin: 10,
+        fontFamily: 'Poppins, sans-serif',
         '&:hover': {
             backgroundColor: '#4fa8fc',
         },
