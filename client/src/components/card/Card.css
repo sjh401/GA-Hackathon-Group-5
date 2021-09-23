@@ -5,9 +5,10 @@
     flex-flow: column;
     height: 50vh;
 }
-.link-noformat {
+.link-sign {
     text-decoration: none;
-    color: black;
+    color: #fff;
+    width: 100px;
 }
 
 .h3-cardhome {
@@ -43,4 +44,19 @@
     flex-flow: column;
     width: 100vw;
     overflow: auto;
+}
+
+.primary {
+    background-color: #ff7777;
+    color: #fff;
+}
+
+.primary:hover {
+    background-color: #4FA8FC;
+    color: #fff;
+}
+
+.secondary:hover {
+    background-color: #4FA8FC;
+    color: #fff;
 }

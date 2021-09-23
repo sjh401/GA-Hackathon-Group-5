@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import ClearIcon from '@mui/icons-material/Clear';
@@ -10,8 +10,6 @@ import Hamburger from '../../components/card/Hamburger';
 
 export default function Services(props) {
     const { currentUser, toggle, service } = props;
-    const [ popup, setPopup ] = useState(false)
-    const [ works, setWorks ] = useState([])
 
     console.log(service)
 

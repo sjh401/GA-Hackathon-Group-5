@@ -13,7 +13,7 @@ main {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #E5E5E5;
     height: 70vh;
     width: 100vw;
     overflow: auto;
@@ -26,7 +26,7 @@ footer {
     align-items: center;
     height: 10vh;
     width: 100vw;
-    background-color: #fff;
+    background-color: #E5E5E5;
 }
 
 .link-noformat {
