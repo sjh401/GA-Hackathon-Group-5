@@ -18,7 +18,7 @@ export default function Container(props) {
     const history = useHistory()
 
     useEffect(() => {
-        const fetchPets = async () => {
+        const fetchPets = async () => { 
             const fetchedPets = await getPets();
             setPets(fetchedPets)
         }
