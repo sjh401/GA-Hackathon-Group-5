@@ -4,15 +4,19 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 import Home from "../screens/home/Home"
 import SignIn from "../screens/user/SignIn"
 import SignUp from "../screens/user/SignUp"
+import CreatePet from "../screens/pet/CreatePet"
+import EditPet from "../screens/pet/EditPet"
+import Schedule from "../screens/schedule"
+import Service from "../screens/services/Services"
 
 import { getAppointment, getAppointments, postAppointment, putAppointment, deleteAppointment } from "../../../controllers/appointments";
 import { getPets, getPet, postPet, putPet, deletePet } from "../../../controllers/pet"
 
 export default function Container(props) {
-    const [ pets, setPets ] = useState([])
-    const [ pet, setPet ] = useState("")
-    const [ appointments, setAppointments ] = useState([])
-    const [ appointment, setAppointment ] = useState("")
+    const [pets, setPets] = useState([])
+    const [pet, setPet] = useState("")
+    const [appointments, setAppointments] = useState([])
+    const [appointment, setAppointment] = useState("")
     const { currentUser } = props
     const history = useHistory()
 
@@ -31,7 +35,7 @@ export default function Container(props) {
         }
         fetchAppointments();
     }, [])
-    
+
     useEffect(() => {
         const fetchAppointment = async () => {
             const fetchedAppointment = await getAppointment()
@@ -46,8 +50,8 @@ export default function Container(props) {
             setPet(fetchedPet)
         }
         fetchPet()
-    }, [])
-
+    }
+    )
     const addPet = async (newItem) => {
         const newPet = await postPet(newItem)
         setAllPets(prevPets => {[
@@ -87,11 +91,14 @@ export default function Container(props) {
         setAllAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment.id !== Number(appointment_id)))
     }
 
+
     return (
         <>
-        <Switch>
+            <Switch>
 
-        </Switch>
+            </Switch>
         </>
     )
+
+
 }
