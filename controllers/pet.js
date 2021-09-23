@@ -56,9 +56,10 @@ export const getPet = async (req, res) => {
 
 export const getPets = async (req, res) => {
   try {
-
-    let user = await User.findById(req.user).populate("pets");
-    const pets = user.pets;
+    // console.log(req.user)
+    // let user = await User.findById(req.user).populate("pets");
+    // const pets = user.pets;
+    const pets = await Pet.find()
     res.json(pets);
   } catch (e) {
     res.status(404).json({ error: e.message });

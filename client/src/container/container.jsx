@@ -3,23 +3,27 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
-import Schedule from "../screens/schedule"
-import Service from "../screens/services/Services"
+import Schedule from "../screens/schedule/Schedule"
+import Home from '../screens/home/Home';
+import Services from '../screens/services/Services';
+import UserAccount from '../screens/user/UserAccount';
+import Appointments from '../screens/appointments/Appointments';
 
-import { getAppointment, getAppointments, postAppointment, putAppointment, deleteAppointment } from "../../../controllers/appointments";
-import { getPets, getPet, postPet, putPet, deletePet } from "../../../controllers/pet"
+import { getAppointment, getAppointments, getAllAppointments, postAppointment, putAppointment, deleteAppointment } from "../services/appointment";
+import { getPets, getPet, postPet, putPet, deletePet } from "../services/pet"
 
 export default function Container(props) {
     const [pets, setPets] = useState([])
     const [pet, setPet] = useState("")
     const [appointments, setAppointments] = useState([])
     const [appointment, setAppointment] = useState("")
-    const { currentUser } = props
+    const { currentUser, toggle, setToggle, service, setService } = props
     const history = useHistory()
 
     useEffect(() => {
         const fetchPets = async () => { 
             const fetchedPets = await getPets();
+            console.log(fetchedPets)
             setPets(fetchedPets)
         }
         fetchPets();
@@ -27,76 +31,74 @@ export default function Container(props) {
 
     useEffect(() => {
         const fetchAppointments = async () => {
-            const fetchedAppointments = await getAppointments()
+            const fetchedAppointments = await getAllAppointments()
             setAppointments(fetchedAppointments)
         }
         fetchAppointments();
     }, [])
 
-    useEffect(() => {
-        const fetchAppointment = async () => {
-            const fetchedAppointment = await getAppointment()
-            setAppointment(fetchedAppointment)
-        }
-        fetchAppointment();
-    }, [])
+    // useEffect(() => {
+    //     const fetchAppointment = async () => {
+    //         const fetchedAppointment = await getAppointment()
+    //         setAppointment(fetchedAppointment)
+    //     }
+    //     fetchAppointment();
+    // }, [])
 
-    useEffect(() => {
-        const fetchPet = async () => {
-            const fetchedPet = await getPet();
-            setPet(fetchedPet)
-        }
-        fetchPet()
-    }
-    )
+    // useEffect(() => {
+    //     const fetchPet = async (id) => {
+    //         const fetchedPet = await getPet();
+    //         setPet(fetchedPet)
+    //     }
+    //     fetchPet()
+    // }, []
+    // )
     const addPet = async (newItem) => {
-        const newPet = await postPet(newItem)
-        setAllPets(prevPets => {[
+        const newPet = await postPet(newItem);
+        setPets(prevPets => ([
             ...prevPets,
-            newItem
-        ]})
+            newPet
+        ]))
     }
 
     const addAppointment = async (newItem) => {
         const newAppointment = await postAppointment(newItem)
-        setAllAppointments(prevAppointments => {[
+        setAppointments(prevAppointments => ([
             ...prevAppointments,
-            newItem
-        ]})
+            newAppointment
+        ]))
     }
 
     const updatePet = async (updatedItem, pet_id) => {
         const updatedPet = await putPet(updatedItem, pet_id)
-        setAllPets(prevPetData => prevPetData.map(pet => {
+        setPets(prevPetData => prevPetData.map(pet => {
             return pet.id === Number(pet_id) ? updatedPet : pet
         }))
     }
 
     const updateAppointment = async (updatedItem, appointment_id) => {
         const updatedAppointment = await putAppointment(updatedItem, appointment_id)
-        setAllAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
+        setAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
             return appointment.id === Number(appointment_id) ? updatedAppointment : appointment
         }))
     }
 
     const removePet = async (pet_id) => {
         await deletePet(pet_id)
-        setAllPets(prevPetData => prevPetData.filter(pet => pet.id !== Number(pet_id)))
+        setPets(prevPetData => prevPetData.filter(pet => pet.id !== Number(pet_id)))
     }
     const removeAppointment = async (appointment_id) => {
         await deleteAppointment(appointment_id)
-        setAllAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment.id !== Number(appointment_id)))
+        setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment.id !== Number(appointment_id)))
     }
+
+    console.log(appointments)
+    console.log(pets)
 
 
     return (
         <>
             <Switch>
-                <Route path="/appointments">
-                    <Schedule 
-                    appointments={appointments}
-                    />
-                </Route>
                 <Route path="/pet/add">
                     <CreatePet
                     addPet={addPet} 
@@ -107,7 +109,39 @@ export default function Container(props) {
                     updatePet={updatePet}
                     />
                 </Route>
-
+                <Route path="/appointments"> 
+                    <Appointments
+                        currentUser={currentUser}
+                        appointments={appointments}
+                    />
+                </Route>
+                <Route path="/schedule">
+                    <Schedule 
+                        currentUser={currentUser}
+                    />
+                </Route>
+                <Route path="/services">
+                    <Services 
+                        currentUser={currentUser}
+                        toggle={toggle}
+                        service={service}
+                    />
+                </Route>
+                <Route path="/account">
+                    <UserAccount 
+                    currentUser={currentUser}
+                    toggle={toggle}
+                    />
+                </Route>
+                <Route path="/">
+                    <Home 
+                        currentUser={currentUser}
+                        setToggle={setToggle}
+                        toggle={toggle}
+                        setService={setService}
+                        service={service}
+                    />
+                </Route>
             </Switch>
         </>
     )

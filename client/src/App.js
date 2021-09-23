@@ -5,11 +5,7 @@ import Layout from './components/layout/Layout';
 import SignUp from './screens/user/SignUp';
 import SignIn from './screens/user/SignIn';
 import { registerUser, loginUser, removeToken } from './services/auth';
-import Home from './screens/home/Home';
-import Services from './screens/services/Services';
-import Schedule from './screens/schedule/Schedule';
-import UserAccount from './screens/user/UserAccount';
-import Appointments from './screens/appointments/Appointments';
+import Container from './container/container';
 
 function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
@@ -46,23 +42,6 @@ function App() {
           toggle={toggle}
         >
           <Switch>
-            <Route path="/appointments"> 
-              <Appointments
-                currentUser={currentUser}
-              />
-            </Route>
-            <Route path="/schedule">
-              <Schedule 
-                currentUser={currentUser}
-              />
-            </Route>
-            <Route path="/services">
-              <Services 
-                currentUser={currentUser}
-                toggle={toggle}
-                service={service}
-              />
-            </Route>
             <Route path="/sign-in">
               <SignIn 
                 handleLogin={handleLogin}
@@ -73,19 +52,13 @@ function App() {
                 handleRegister={handleRegister}
               />
             </Route>
-            <Route path="/account">
-                <UserAccount 
-                  currentUser={currentUser}
-                  toggle={toggle}
-                />
-            </Route>
-            <Route>
-              <Home 
+            <Route path="/">
+              <Container 
                 currentUser={currentUser}
-                setToggle={setToggle}
                 toggle={toggle}
-                setService={setService}
+                setToggle={setToggle}
                 service={service}
+                setService={setService}
               />
             </Route>
           </Switch>

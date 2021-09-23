@@ -12,16 +12,6 @@ export default function Services(props) {
     const { currentUser, toggle, service } = props;
 
     console.log(service)
-
-    // useEffect(() => {
-    //     const getSome = async () => {
-    //         const places = await getPlaces();
-    //         setWorks(places)
-    //     }
-    //     getSome()
-    // }, [])
-    // pull from api or state and use service prop to filter type of business
-    
     
     return (
         <div className="div-services">

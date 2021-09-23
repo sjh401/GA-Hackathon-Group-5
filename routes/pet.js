@@ -13,7 +13,7 @@ const router = Router();
 
 router.post("/pets", restrict, postPet);
 router.get("/pets/:id", restrict, getPet);
-router.get("/pets", restrict, getPets);
+router.get("/pets", getPets);
 router.put("/pets/:id", restrict, putPet);
 router.delete("/pets/:id", restrict, deletePet);
 

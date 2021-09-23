@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  getAllAppointments,
   deleteAppointment,
   getAppointment,
   getAppointments,
@@ -15,6 +16,8 @@ import restrict from "../helpers/restrict.js";
 
 const router = Router();
 
+
+router.get("/appointments", getAllAppointments);
 router.get("/appointments/:petID", getAppointments);
 router.get("/appointment/:id", getAppointment);
 router.post("/appointment/:petID", postAppointment);
