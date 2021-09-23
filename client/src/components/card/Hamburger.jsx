@@ -57,10 +57,22 @@ export default function Hamburger(props) {
                     minWidth: 175,
                 },}}
                 >
+                <MenuItem
+                    style={{display: 'flex',
+                    justifyContent: 'flex-start',
+                    backgroundColor: '#4FA8FC',
+                    color: '#fff',
+                    margin: '-8px 0 0 0'
+                }}
+                >
+                    Filter By:
+                </MenuItem>
                 <MenuItem 
                     style={{display: 'flex',
                     flexFlow: 'row',
-                    justifyContent: 'space-between'}}
+                    justifyContent: 'space-between',
+                    borderBottom: 'solid #000 1px'
+                    }}
                 >
                     <div>
                         Open Now

@@ -9,6 +9,7 @@ import './Schedule.css'
 const PrimaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#ff7777',
+    fontFamily: 'Poppins, sans-serif',
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },

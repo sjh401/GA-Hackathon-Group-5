@@ -9,6 +9,7 @@ import Home from './screens/home/Home';
 import Services from './screens/services/Services';
 import Schedule from './screens/schedule/Schedule';
 import UserAccount from './screens/user/UserAccount';
+import Appointments from './screens/appointments/Appointments';
 
 function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
@@ -45,7 +46,12 @@ function App() {
           toggle={toggle}
         >
           <Switch>
-            <Route path="/schedule"> 
+            <Route path="/appointments"> 
+              <Appointments
+                currentUser={currentUser}
+              />
+            </Route>
+            <Route path="/schedule">
               <Schedule 
                 currentUser={currentUser}
               />
