@@ -3,10 +3,11 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
+import UpdateUser from "../screens/user/UpdateUser";
 // import Businesses from "../screens/nearby/Businesses";
 
 import { getAppointment, getAppointments, postAppointment, getAllAppointments, putAppointment, deleteAppointment, getAllBoarding, getAllGroomers, getAllVets } from "../services/appointment";
-
+import { updateUser } from "../services/auth"
 import Schedule from "../screens/schedule/Schedule"
 import Home from '../screens/home/Home';
 import Services from '../screens/services/Services';
@@ -93,6 +94,11 @@ export default function Container(props) {
         history.push('/account')
     }
 
+    const updateUser = async (updatedItem, user_id) => {
+        const updatedUser = await updateUser(user_id, updatedItem)
+        history.push('/account')
+    }
+
     const updateAppointment = async (updatedItem, appointment_id) => {
         const updatedAppointment = await putAppointment(updatedItem, appointment_id)
         setAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
@@ -164,6 +170,11 @@ export default function Container(props) {
                         appointments={appointments}
                     />
                 </Route>
+                <Route path="/users/location">
+                    <UpdateUser
+                        updateUser={updateUser}
+                        />
+                        </Route>
             </Switch>
         </>
     )
