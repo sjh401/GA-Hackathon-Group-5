@@ -7,11 +7,20 @@ export default function CardHome(props) {
     const { setService, appointments, currentUser, pets } = props;
     const [ userAppointments, setUserAppointments ] = useState([]);
 
+    console.log(appointments)
+    console.log(pets)
     const zipcodes = require('zipcodes');
     const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
 
     useEffect(() =>{
-        setUserAppointments(pets?.filter(pet => pet.owner === currentUser?.userId))
+        if(!pets.length){
+            setUserAppointments([])
+        }else {
+        setUserAppointments(appointments
+            // pets?.find(pet => 
+            // appointment.appoitnment_holder === currentUser?.userId)
+            )
+        }
     },[currentUser, pets]);
 
 

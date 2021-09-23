@@ -9,7 +9,7 @@ const Groomers = (props) => {
             <h1>Groomers</h1>
             {businesses ? businesses.map((business, k) => {
                 return(
-                    <div key={k}>
+                    <div  key={business.phone}>
                         <h1>{business.name}</h1>
                         <p>Distance: {business.distance}</p>
                         <p>{business.location.city}, {business.location.state}, {business.location.zip_code} {business.location.country}</p>
