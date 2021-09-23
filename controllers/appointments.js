@@ -119,3 +119,12 @@ export const findBoarding = async (req, res) => {
     res.status(404).json({ error: e.message });
   }
 };
+
+export const getAllAppointments = async (req, res) => {
+  try {
+    let appointments = await Appointment.find()
+    res.json(appointments);
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
+};

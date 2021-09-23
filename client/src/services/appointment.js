@@ -9,6 +9,15 @@ export const getAppointments = async () => {
   }
 };
 
+export const getAllAppointments = async (id) => {
+    try {
+        let res = await api.get(`/api/appointments`);
+        return res.data;
+    } catch (e) {
+        return ({ errors: e });
+    };
+}; 
+
 export const getAppointment = async (id) => {
   try {
     let res = await api.get(`/appointment${id}`);
