@@ -3,20 +3,26 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
+import Businesses from "../screens/nearby/Businesses";
+
+import { getAppointment, getAppointments, postAppointment, getAllAppointments, putAppointment, deleteAppointment, findBoarding, findGroomer, findVet } from "../../../controllers/appointments";
+
 import Schedule from "../screens/schedule/Schedule"
 import Home from '../screens/home/Home';
 import Services from '../screens/services/Services';
 import UserAccount from '../screens/user/UserAccount';
 import Appointments from '../screens/appointments/Appointments';
-
-import { getAppointment, getAppointments, getAllAppointments, postAppointment, putAppointment, deleteAppointment } from "../services/appointment";
 import { getPets, getPet, postPet, putPet, deletePet } from "../services/pet"
+
 
 export default function Container(props) {
     const [pets, setPets] = useState([])
     const [pet, setPet] = useState("")
     const [appointments, setAppointments] = useState([])
     const [appointment, setAppointment] = useState("")
+    const [grooming, setGrooming] = useState([])
+    const [vet, setVets] = useState([])
+    const [boarding, setBoarding] = useState([])
     const { currentUser, toggle, setToggle, service, setService } = props
     const history = useHistory()
 
@@ -28,6 +34,30 @@ export default function Container(props) {
         }
         fetchPets();
     }, [])
+
+    useEffect(() => {
+        const fetchGrooming = async () => {
+            const fetchedGrooming = await findGroomer();
+            setGrooming(fetchedGrooming)
+        }
+        fetchGrooming();
+    },[])
+
+    useEffect(() => {
+        const fetchVet = async () => {
+            const fetchedVet = await findVet();
+            setVets(fetchedVet)
+        }
+        fetchVet();
+    },[])
+
+    useEffect(() => {
+        const fetchBoarding = async () => {
+            const fetchedBoarding = await findBoarding();
+            setBoarding(fetchedBoarding)
+        }
+        fetchBoarding();
+    },[])
 
     useEffect(() => {
         const fetchAppointments = async () => {

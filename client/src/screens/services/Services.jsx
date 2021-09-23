@@ -7,11 +7,33 @@ import CardServices from '../../components/card/CardServices'
 
 import "./Services.css"
 import Hamburger from '../../components/card/Hamburger';
+import Groomers from '../nearby/Groomers';
+import Vets from '../nearby/Vets';
+import Boarding from '../nearby/Boarding';
 
 export default function Services(props) {
     const { currentUser, toggle, service } = props;
 
     console.log(service)
+
+    // useEffect(() => {
+    //     const getSome = async () => {
+    //         const places = await getPlaces();
+    //         setWorks(places)
+    //     }
+    //     getSome()
+    // }, [])
+    // pull from api or state and use service prop to filter type of business
+    let showComponent = ""
+    if (service === "Grooming") {
+        showComponent =  <Groomers />
+    }
+    if (service === "Veterinarian") {
+        showComponent =  <Vets />
+    }
+    if (service === "Boarding") {
+        showComponent =  <Boarding />
+    }
     
     return (
         <div className="div-services">
@@ -29,6 +51,7 @@ export default function Services(props) {
                 currentUser={currentUser}
                 toggle={toggle}
             />
+            {showComponent}
         </div>
     )
 }
