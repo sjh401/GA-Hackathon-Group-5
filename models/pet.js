@@ -7,6 +7,15 @@ const PetSchema = new Schema(
       type: String,
       required: true,
     },
+    sex: {
+      type: String,
+    },
+    color: {
+      type: String,
+    },
+    weight: {
+      type: Number,
+    },
     appointments: [{ type: Schema.Types.ObjectId, ref: "Appointment" }],
     owner: { type: Schema.Types.ObjectId, ref: "User" },
   },
