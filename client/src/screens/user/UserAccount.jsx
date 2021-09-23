@@ -14,12 +14,12 @@ export default function UserAccount(props) {
     useEffect(() =>{
         setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
     },[currentUser, pets]);
-    const location = zipcodes.lookupByCoords(currentUser.location.latitude, currentUser.location.longitude);
+    const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
 
     return (
         <div className="div-user">
-            <h3>{currentUser.username}</h3>
-            <div>{location.zip}</div>
+            <h3>{currentUser?.username}</h3>
+            <div>{location?.zip}</div>
             <Link to="/pets">
                 Add a pet
             </Link>

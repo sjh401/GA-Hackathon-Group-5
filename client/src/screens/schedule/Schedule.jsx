@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
 import './Schedule.css'
+import ScheduleGroomers from '../../components/schedule/ScheduleGroomers';
+import ScheduleVets from '../../components/schedule/ScheduleVets';
+import ScheduleBoarding from '../../components/schedule/ScheduleBoarding';
 
 const PrimaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
@@ -20,7 +24,18 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
 export default function Schedule(props) {
     const [ toggle, setToggle ] = useState(false);
     
-
+    const { service, currentUser } = props;
+    
+    let showComponent = ""
+    if (service === "Grooming") {
+        showComponent =  <ScheduleGroomers />
+    }
+    if (service === "Veterinarian") {
+        showComponent =  <ScheduleVets />
+    }
+    if (service === "Boarding") {
+        showComponent =  <ScheduleBoarding />
+    }
     return (
         <>
             <div 
@@ -28,16 +43,7 @@ export default function Schedule(props) {
                 style={{display: (toggle === false) ? "flex": "none"}}
             >
                 <div>
-                    <h3>Grooming Services Available</h3>
-                    <div className="services-inputs">
-                        <div>Nail Trim</div>
-                        <div>Teeth Cleaning</div>
-                        <div>Spa Bath</div>
-                        <div>Brush Out</div>
-                        <div>Ear Cleaning</div>
-                        <div>Dematting</div>
-                        <div>Flea/Tick Bath</div>
-                    </div>
+                    {showComponent}
                 </div>
                 <div>
                     <div className="services-inputs">

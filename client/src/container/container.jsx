@@ -127,6 +127,7 @@ export default function Container(props) {
                 <Route path="/schedule">
                     <Schedule 
                         currentUser={currentUser}
+                        service={service}
                     />
                 </Route>
                 <Route path="/services">
