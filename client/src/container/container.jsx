@@ -176,6 +176,7 @@ export default function Container(props) {
                         setService={setService}
                         service={service}
                         appointments={appointments}
+                        pets={pets}
                     />
                 </Route>
                 <Route path="/users/location">

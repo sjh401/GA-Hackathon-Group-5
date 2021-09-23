@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 
 import "./Card.css"
 
 export default function CardHome(props) {
-    const { setService, appointments, currentUser } = props;
+    const { setService, appointments, currentUser, pets } = props;
+    const [ userAppointments, setUserAppointments ] = useState([]);
 
     const zipcodes = require('zipcodes');
     const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
+
+    useEffect(() =>{
+        setUserAppointments(pets?.filter(pet => pet.owner === currentUser?.userId))
+    },[currentUser, pets]);
+
 
     return (
         <div className="div-cardhome">
@@ -26,7 +32,7 @@ export default function CardHome(props) {
             <div>
                 <h3 className="h3-cardhome">Upcoming Appointments</h3>
                 <div className="div-row">
-                    {appointments ? appointments.map(appointment => {
+                    {userAppointments ? userAppointments.map(appointment => {
                         return (
                             <div 
                                 className="row-inner border-pink appointment"
