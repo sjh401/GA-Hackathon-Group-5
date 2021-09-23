@@ -20,7 +20,7 @@ export default function Services(props) {
     //     }
     //     getSome()
     // }, [])
-    // // pull from api or state and use service prop to filter type of business
+    // pull from api or state and use service prop to filter type of business
     
     
     return (

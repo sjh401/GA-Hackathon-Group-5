@@ -1,15 +1,21 @@
-import { Router } from "express"
-import restrict from "../helpers/restrict.js"
-import { signUp, signIn, verify, getUsers, getUser, updateUser } from "../controllers/user.js"
+import { Router } from "express";
+import restrict from "../helpers/restrict.js";
+import {
+  signUp,
+  signIn,
+  verify,
+  getUsers,
+  getUser,
+  updateUser,
+} from "../controllers/user.js";
 
-const router = Router()
+const router = Router();
 
-router.post("/sign-up", signUp)
-router.post("/sign-in", signIn)
-router.get("/verify", verify)
-router.get("/users", getUsers)
-router.get("/users/:id", getUser)
-router.put("/users/:id", restrict, updateUser)
+router.post("/sign-up", signUp);
+router.post("/sign-in", signIn);
+router.get("/verify", verify);
+router.get("/users", getUsers);
+router.get("/users/:id", getUser);
+router.put("/users/:id", restrict, updateUser);
 
-
-export default router
+export default router;
