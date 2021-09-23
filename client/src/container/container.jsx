@@ -13,6 +13,7 @@ import Services from '../screens/services/Services';
 import UserAccount from '../screens/user/UserAccount';
 import Appointments from '../screens/appointments/Appointments';
 import { getPets, getPet, postPet, putPet, deletePet } from "../services/pet"
+import Boarding from "../screens/nearby/Boarding";
 
 
 export default function Container(props) {
@@ -133,6 +134,9 @@ export default function Container(props) {
                         currentUser={currentUser}
                         toggle={toggle}
                         service={service}
+                        boarding={boarding}
+                        vet={vet}
+                        grooming={grooming}
                     />
                 </Route>
                 <Route path="/account">

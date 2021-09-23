@@ -12,7 +12,8 @@ import Vets from '../nearby/Vets';
 import Boarding from '../nearby/Boarding';
 
 export default function Services(props) {
-    const { currentUser, toggle, service } = props;
+    const { currentUser, toggle, service, boarding, vet, grooming  } = props;
+    console.log("PROPS", props)
 
     console.log(service)
 
@@ -26,13 +27,13 @@ export default function Services(props) {
     // pull from api or state and use service prop to filter type of business
     let showComponent = ""
     if (service === "Grooming") {
-        showComponent =  <Groomers />
+        showComponent =  <Groomers groomers = {grooming}/>
     }
     if (service === "Veterinarian") {
-        showComponent =  <Vets />
+        showComponent =  <Vets vets = {vet}/>
     }
     if (service === "Boarding") {
-        showComponent =  <Boarding />
+        showComponent =  <Boarding boarding = {boarding}/>
     }
     
     return (
