@@ -3,9 +3,9 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
-import Businesses from "../screens/nearby/Businesses";
+// import Businesses from "../screens/nearby/Businesses";
 
-import { getAppointment, getAppointments, postAppointment, getAllAppointments, putAppointment, deleteAppointment, findBoarding, findGroomer, findVet } from "../../../controllers/appointments";
+import { getAppointment, getAppointments, postAppointment, getAllAppointments, putAppointment, deleteAppointment, getAllBoarding, getAllGroomers, getAllVets } from "../services/appointment";
 
 import Schedule from "../screens/schedule/Schedule"
 import Home from '../screens/home/Home';
@@ -37,15 +37,15 @@ export default function Container(props) {
 
     useEffect(() => {
         const fetchGrooming = async () => {
-            const fetchedGrooming = await findGroomer();
+            const fetchedGrooming = await getAllGroomers();
             setGrooming(fetchedGrooming)
         }
         fetchGrooming();
-    },[])
+    },[] )
 
     useEffect(() => {
         const fetchVet = async () => {
-            const fetchedVet = await findVet();
+            const fetchedVet = await getAllVets();
             setVets(fetchedVet)
         }
         fetchVet();
@@ -53,7 +53,7 @@ export default function Container(props) {
 
     useEffect(() => {
         const fetchBoarding = async () => {
-            const fetchedBoarding = await findBoarding();
+            const fetchedBoarding = await getAllBoarding();
             setBoarding(fetchedBoarding)
         }
         fetchBoarding();
