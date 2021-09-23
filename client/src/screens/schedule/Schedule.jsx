@@ -98,7 +98,7 @@ export default function Schedule(props) {
             e.preventDefault()
             addAppointment(formData)
             }}>
-            <h2 className="pet-create">Add a pet</h2>
+            <h2 className="pet-create">Add a appointment</h2>
             <br/>
             <TextField 
                 required 
@@ -113,7 +113,6 @@ export default function Schedule(props) {
                 required 
                 id="outlined-basic" 
                 type="datetime-local"
-                label="Date" 
                 name="date"
                 variant="outlined"
                 value={date}
@@ -130,7 +129,7 @@ export default function Schedule(props) {
                 value={appointment_holder}
                 onChange={handleChange}
             >
-                <MenuItem id="All" ><em>Cuisine</em></MenuItem>
+                <MenuItem id="All" ><em>Which Pet?</em></MenuItem>
                 {userPets ? userPets.map(pet => {
                     return (<MenuItem value={`${pet._id}`} key={pet._id}><em>{pet.name}</em></MenuItem>)
                 }): ""}
