@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
 import './Schedule.css'
 
-const useStyles = makeStyles((theme) => ({
-    button: {
-        backgroundColor: '#1d7dc2',
-        margin: '2px',
-        '&:hover': {
-            backgroundColor: '#f8f7ff',
-            color: '#1d7dc2'
-        },
-    }
+const PrimaryButton = styled(Button)(({ theme }) => ({
+    color: '#fff',
+    backgroundColor: '#ff7777',
+    '&:hover': {
+        backgroundColor: '#4fa8fc',
+    },
 }));
 
 export default function Schedule(props) {
     const [ toggle, setToggle ] = useState(false);
     
-    const classes = useStyles();
 
     return (
         <>
@@ -73,15 +69,12 @@ export default function Schedule(props) {
                         <div>4</div>
                     </div>
                 </div>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    className={classes.button}
+                <PrimaryButton 
                     type="submit"
                     onClick={(e)=> setToggle(prevToggle => !prevToggle)}
                 >
                     Book Appointment
-                </Button>
+                </PrimaryButton>
             </div>
             <div 
                 className={(toggle === false) ? "none": "div-schedule-hidden"}
@@ -93,15 +86,12 @@ export default function Schedule(props) {
                     </div>
                 </div>
                 <Link to='/' className="link-noformated">
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        className={classes.button}
+                    <PrimaryButton 
                         type="submit"
                         onClick={(e)=> setToggle(prevToggle => !prevToggle)}
                     >
                         Return Home
-                    </Button>
+                    </PrimaryButton>
                 </Link>
             </div>
         </>

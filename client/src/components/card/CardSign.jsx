@@ -1,37 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-// import { makeStyles } from '@mui/styles';
-// import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 import "./Card.css"
 
-// const useStyles = makeStyles((theme) => ({
-//     primary: {
-//         backgroundColor: '#ff7777',
-//         margin: '2px',
-//         '&:hover': {
-//             backgroundColor: '#ff7777',
-//             color: '#1d7dc2'
-//         },
-//     },
-//     secondary: {
-//         backgroundColor: '#f8f7ff',
-//         margin: '2px',
-//         '&:hover': {
-//             backgroundColor: '#f8f7ff',
-//             color: '#1d7dc2'
-//         },
-//     root: {
-//         color: '#fff'
-//     }
-//     }
-// }));
+const PrimaryButton = styled(Button)(({ theme }) => ({
+    color: '#fff',
+    backgroundColor: '#ff7777',
+    '&:hover': {
+        backgroundColor: '#4fa8fc',
+    },
+}));
+const SecondaryButton = styled(Button)(({ theme }) => ({
+    color: '#fff',
+    backgroundColor: '#4fa8fc',
+    '&:hover': {
+        backgroundColor: '#ff7777',
+    },
+}));
 
 export default function CardSign(props) {
     const { setToggle } = props;
-
-    // const classes = useStyles();
 
     return (
         <div className="div-sign">
@@ -39,9 +30,9 @@ export default function CardSign(props) {
                 <h1>Pamper Pups</h1>
                 <div>Hub for all of your pet’s needs.</div>
             </div>
-            <Link to="/sign-in" className="link-sign primary"><button className='primary'>Sign In</button></Link>            
-            <Link to="/sign-up" className="link-sign secondary"><button>Sign Up</button></Link>
-            <button onClick={(e) => setToggle(prevToggle => !prevToggle)}>Continue as Guest</button>
+            <Link to="/sign-in" className="link-sign"><PrimaryButton>Sign In</PrimaryButton></Link>            
+            <Link to="/sign-up" className="link-sign"><SecondaryButton>Sign Up</SecondaryButton></Link>
+            <Button onClick={(e) => setToggle(prevToggle => !prevToggle)}>Continue as Guest</Button>
         </div>
     )
 }

@@ -1,23 +1,19 @@
-import { makeStyles } from '@mui/styles';
-import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 
-const useStyles = makeStyles((theme) => ({
-    button: {
-        backgroundColor: '#1d7dc2',
-        margin: '2px',
-        '&:hover': {
-            backgroundColor: '#f8f7ff',
-            color: '#1d7dc2'
-        },
-    }
+const PrimaryButton = styled(Button)(({ theme }) => ({
+    color: '#fff',
+    backgroundColor: '#ff7777',
+    '&:hover': {
+        backgroundColor: '#4fa8fc',
+    },
 }));
 
 export default function SignInForm(props) {
 
     const { handleRegister, handleChange, username, password, formData } = props;
-    const classes = useStyles();
 
     return (
         <form 
@@ -48,14 +44,11 @@ export default function SignInForm(props) {
                 onChange={handleChange} />
             <br/>
             <div>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    className={classes.button}
+                <PrimaryButton 
                     type="submit"
                 >
                     Submit
-                </Button>
+                </PrimaryButton>
             </div>
         </form>
     )

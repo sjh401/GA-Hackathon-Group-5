@@ -13,14 +13,6 @@ export default function Hamburger(props) {
     const open = Boolean(anchorEl);
 
     const HamburgerCSS = makeStyles((theme) => ({
-        button: {
-            backgroundColor: '#000',
-            margin: '2px',
-            '&:hover': {
-                backgroundColor: '#fff',
-                color: '#000'
-            },
-        },
         link: {
             color: '#000',
             textDecoration: 'none',
