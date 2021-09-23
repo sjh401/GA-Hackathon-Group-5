@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { Switch, Route, useHistory } from 'react-router-dom'
 
-import Home from "../screens/home/Home"
-import SignIn from "../screens/user/SignIn"
-import SignUp from "../screens/user/SignUp"
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
 import Schedule from "../screens/schedule"
@@ -95,6 +92,21 @@ export default function Container(props) {
     return (
         <>
             <Switch>
+                <Route path="/appointments">
+                    <Schedule 
+                    appointments={appointments}
+                    />
+                </Route>
+                <Route path="/pet/add">
+                    <CreatePet
+                    addPet={addPet} 
+                    />
+                </Route>
+                <Route path="/pet/edit/:pet_id">
+                    <EditPet
+                    updatePet={updatePet}
+                    />
+                </Route>
 
             </Switch>
         </>
