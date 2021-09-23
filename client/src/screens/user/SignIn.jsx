@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import SignInForm from '../../components/sign/SignInForm';
 
 export default function SignIn(props) {
     const [ formData, setFormData ] = useState({
@@ -19,33 +20,13 @@ export default function SignIn(props) {
 
     return (
         <div>
-            <form 
-                className="sign-up" 
-                onSubmit={(e) => {
-                e.preventDefault()
-                handleLogin(formData)
-                }}>
-                <label>Username</label>
-                <br/>
-                <input 
-                    id="username" 
-                    type="text" 
-                    name="username"
-                    value={username}
-                    onChange={handleChange}
-                /> 
-                <br/>
-                <label>Password</label>
-                <input 
-                    id="password"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                />
-                <br/>
-                <button>Sign In</button>
-            </form>
+            <SignInForm
+                handleRegister={handleLogin}
+                handleChange={handleChange}
+                username={username}
+                password={password}
+                formData={formData}
+            />
         </div>
     )
 }

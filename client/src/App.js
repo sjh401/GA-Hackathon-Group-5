@@ -8,6 +8,7 @@ import { registerUser, loginUser, removeToken } from './services/auth';
 import Home from './screens/home/Home';
 import Services from './screens/services/Services';
 import Schedule from './screens/schedule/Schedule';
+import UserAccount from './screens/user/UserAccount';
 
 function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
@@ -65,6 +66,12 @@ function App() {
               <SignUp 
                 handleRegister={handleRegister}
               />
+            </Route>
+            <Route path="/account">
+                <UserAccount 
+                  currentUser={currentUser}
+                  toggle={toggle}
+                />
             </Route>
             <Route>
               <Home 
