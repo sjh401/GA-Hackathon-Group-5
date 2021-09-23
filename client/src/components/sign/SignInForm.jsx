@@ -7,6 +7,8 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#ff7777',
     fontFamily: 'Poppins, sans-serif',
+    width: '60vw',
+    maxWidth: 194,
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },
@@ -23,7 +25,7 @@ export default function SignInForm(props) {
             e.preventDefault()
             handleRegister(formData)
             }}>
-            <h2 className="login-register">Register</h2>
+            <h2 className="login-register">Login</h2>
             <br/>
             <TextField 
                 required 

@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import "./User.css"
 
 export default function UserAccount(props) {
+    const [ userPets, setUserPets ] = useState();
+
+    const { pets, currentUser } = props;
+    useEffect(() =>{
+        setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
+    },[currentUser, pets])
+
     return (
         <div className="div-user">
             <h3>username</h3>
@@ -10,11 +18,13 @@ export default function UserAccount(props) {
                 Add a pet
             </Link>
 
-            {/* map through pets */}
-            <div>
-                <h5>pets name</h5>
-                <div>appointments for said pet</div>
-            </div>
+            {userPets && userPets.map(pet => (
+                <Link to={`/pet/edit/${pet._id}`} className="pets-map" key={pet._id}>
+                <div className="pets-map">
+                    <h5>{pet.name}</h5>
+                </div>
+                </Link>
+            ))}
         </div>
     )
 }

@@ -56,7 +56,7 @@ export const deleteAppointment = async (id) => {
 
 export const getAllGroomers = async (id) => {
   try {
-    let res = await api.get(`/findgroomer`);
+    let res = await api.get(`/api/findgroomer`);
     return res.data;
   } catch (e) {
     return { errors: e };
@@ -65,7 +65,7 @@ export const getAllGroomers = async (id) => {
 
 export const getAllVets = async (id) => {
   try {
-    let res = await api.get(`/findvet`);
+    let res = await api.get(`/api/findvet`);
     return res.data;
   } catch (e) {
     return { errors: e };
@@ -74,7 +74,7 @@ export const getAllVets = async (id) => {
 
 export const getAllBoarding = async (id) => {
   try {
-    let res = await api.get(`/findboarding`);
+    let res = await api.get(`/api/findboarding`);
     return res.data;
   } catch (e) {
     return { errors: e };

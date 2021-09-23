@@ -38,7 +38,7 @@ export const signUp = async (req, res) => {
 
     const token = jwt.sign(payload, TOKEN_KEY);
 
-    res.status(201).json({ token });
+    res.status(201).json({ userId: user._id, token });
   } catch (e) {
     res.status(404).json({ error: e.message });
   }
@@ -60,7 +60,7 @@ export const signIn = async (req, res) => {
       };
       const token = jwt.sign(payload, TOKEN_KEY);
 
-      res.status(201).json({ token });
+      res.status(201).json({ userId: user._id, token });
     } else {
       res.status(401).json({ error: "Invalid Credentials" });
     }

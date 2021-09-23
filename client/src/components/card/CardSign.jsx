@@ -10,6 +10,8 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#ff7777',
     fontFamily: 'Poppins, sans-serif',
+    width: '60vw',
+    maxWidth: 250,
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },
@@ -18,6 +20,8 @@ const SecondaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#4fa8fc',
     fontFamily: 'Poppins, sans-serif',
+    width: '60vw',
+    maxWidth: 250,
     '&:hover': {
         backgroundColor: '#ff7777',
     },

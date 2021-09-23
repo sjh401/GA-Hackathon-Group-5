@@ -7,6 +7,8 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#ff7777',
     fontFamily: 'Poppins, sans-serif',
+    width: '60vw',
+    maxWidth: 194,
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },

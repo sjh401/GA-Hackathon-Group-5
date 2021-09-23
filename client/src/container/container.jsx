@@ -85,26 +85,27 @@ export default function Container(props) {
     }
 
     const updatePet = async (updatedItem, pet_id) => {
-        const updatedPet = await putPet(updatedItem, pet_id)
+        const updatedPet = await putPet(pet_id, updatedItem)
         setPets(prevPetData => prevPetData.map(pet => {
-            return pet.id === Number(pet_id) ? updatedPet : pet
+            return pet._id === pet_id ? updatedPet : pet
         }))
+        history.push('/account')
     }
 
     const updateAppointment = async (updatedItem, appointment_id) => {
         const updatedAppointment = await putAppointment(updatedItem, appointment_id)
         setAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
-            return appointment.id === Number(appointment_id) ? updatedAppointment : appointment
+            return appointment._id === appointment_id ? updatedAppointment : appointment
         }))
     }
 
     const removePet = async (pet_id) => {
         await deletePet(pet_id)
-        setPets(prevPetData => prevPetData.filter(pet => pet.id !== Number(pet_id)))
+        setPets(prevPetData => prevPetData.filter(pet => pet._id !== pet_id))
     }
     const removeAppointment = async (appointment_id) => {
         await deleteAppointment(appointment_id)
-        setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment.id !== Number(appointment_id)))
+        setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment._id !== appointment_id))
     }
 
     return (
@@ -113,6 +114,7 @@ export default function Container(props) {
                 <Route path="/pet/edit/:pet_id">
                     <EditPet
                     updatePet={updatePet}
+                    pets={pets}
                     />
                 </Route>
                 <Route path="/appointments"> 
@@ -137,6 +139,7 @@ export default function Container(props) {
                     <UserAccount 
                     currentUser={currentUser}
                     toggle={toggle}
+                    pets={pets}
                     />
                 </Route>
                 <Route path="/pets">
