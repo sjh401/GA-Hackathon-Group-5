@@ -107,7 +107,7 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.user;
     const { body } = req;
     const user = await User.findByIdAndUpdate(id, body, { new: true });
     let zipcode = req.body.location;
@@ -116,7 +116,7 @@ export const updateUser = async (req, res) => {
       latitude: zipcodeData.latitude,
       longitude: zipcodeData.longitude,
     };
-    await user.save()
+    await user.save();
     if (user) {
       res.json(user);
     } else {

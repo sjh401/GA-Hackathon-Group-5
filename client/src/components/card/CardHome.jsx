@@ -12,7 +12,7 @@ export default function CardHome(props) {
                 Location
                 {/* {users.location} */}
             </div>
-            <Link to='/users'>Change Location</Link>
+            <Link to='/users/location'>Change Location</Link>
             <div>
                 <h3 className="h3-cardhome">Services</h3>
                 <div className="div-row">

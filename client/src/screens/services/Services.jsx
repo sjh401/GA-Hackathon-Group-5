@@ -13,8 +13,6 @@ import Boarding from '../nearby/Boarding';
 
 export default function Services(props) {
     const { currentUser, toggle, service, boarding, vet, grooming  } = props;
-    console.log("PROPS", props)
-
     console.log(service)
 
     // useEffect(() => {
