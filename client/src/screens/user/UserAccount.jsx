@@ -5,16 +5,15 @@ import "./User.css"
 
 export default function UserAccount(props) {
     const [ userPets, setUserPets ] = useState();
-
+    const { pets, currentUser } = props;
 
     const zipcodes = require('zipcodes');
+    const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
 
-
-    const { pets, currentUser } = props;
     useEffect(() =>{
         setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
     },[currentUser, pets]);
-    const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
+    
 
     return (
         <div className="div-user">

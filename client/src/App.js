@@ -13,7 +13,7 @@ function App() {
   const [ service, setService ] = useState("")
   const history = useHistory();
 
-  console.log(currentUser)
+
   const handleRegister = async (registerData) => {
     const userData = await registerUser(registerData);
     setCurrentUser(userData);
@@ -21,7 +21,7 @@ function App() {
   }
 
   const handleLogin = async (loginData) => {
-    console.log(loginData)
+
     const userData = await loginUser(loginData);
     setCurrentUser(userData);
     history.push('/');

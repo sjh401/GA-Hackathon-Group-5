@@ -7,7 +7,6 @@ import CardHome from '../../components/card/CardHome';
 export default function Home(props) {
     const { currentUser, setToggle, toggle, service, setService, appointments } = props;
 
-    console.log(appointments)
     return (
         <div className="div-home">
             { !currentUser && toggle === false &&
@@ -20,6 +19,7 @@ export default function Home(props) {
                     setService={setService}
                     service={service}
                     appointments={appointments}
+                    currentUser={currentUser}
                 />
             }
         </div>

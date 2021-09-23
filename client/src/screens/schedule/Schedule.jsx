@@ -49,7 +49,6 @@ export default function Schedule(props) {
         service: ''
     });
 
-    console.log(formData)
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     
@@ -83,8 +82,7 @@ export default function Schedule(props) {
     if (service === "Boarding") {
         showComponent =  <ScheduleBoarding />
     }
-    const time = new Date().getTime()
-    console.log(time)
+
     return (
         <>
             <div 
@@ -161,7 +159,7 @@ export default function Schedule(props) {
                 className={(toggle === false) ? "none": "div-schedule-hidden"}
             >
                 <div>
-                    <img src="https://i.imgur.com/pFuc46U.png" className="confirmed-image"/>
+                    <img src="https://i.imgur.com/pFuc46U.png" alt="owner and dog" className="confirmed-image"/>
                     <h3>Your appointment is confirmed!!</h3>  
                     <div>
                         The appointment has been added to your calendar.

@@ -62,7 +62,6 @@ export const deleteAppointment = async (req, res) => {
   try {
     const { id, petID } = req.params;
     let pet = await Pet.findById(petID);
-    console.log(pet);
     pet.appointments = pet.appointments.filter(
       (appointment) => appointment != id
     );
@@ -98,7 +97,6 @@ export const findVet = async (req, res) => {
       },
     };
     let url = `http://api.yelp.com/v3/businesses/search?term=vet&latitude=${user.location.latitude}4&longitude=${user.location.longitude}&api`;
-    console.log(url);
     let results = await axios.get(url, config);
     res.send(results.data);
   } catch (e) {

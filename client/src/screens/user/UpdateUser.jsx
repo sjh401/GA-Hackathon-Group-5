@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 
 import { updateUser } from '../../services/auth';
 
@@ -28,7 +28,7 @@ export default function UpdateUser(props) {
             [name]: value
         }))
     }
-    console.log(props)
+
     return (
         <div>
             <form 

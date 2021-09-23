@@ -13,16 +13,10 @@ import Boarding from '../nearby/Boarding';
 
 export default function Services(props) {
     const { currentUser, toggle, service, boarding, vet, grooming  } = props;
-    console.log(service)
 
-    // useEffect(() => {
-    //     const getSome = async () => {
-    //         const places = await getPlaces();
-    //         setWorks(places)
-    //     }
-    //     getSome()
-    // }, [])
-    // pull from api or state and use service prop to filter type of business
+    const zipcodes = require('zipcodes');
+    const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
+
     let showComponent = ""
     if (service === "Grooming") {
         showComponent =  <Groomers groomers = {grooming}/>
@@ -36,7 +30,7 @@ export default function Services(props) {
     
     return (
         <div className="div-services">
-            <div>location</div>
+            <div>{location.zip}</div>
             <Link to='/users'>Change Location</Link>
             <div className="services-filter">
                 <ClearIcon 

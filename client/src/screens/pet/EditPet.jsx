@@ -25,7 +25,6 @@ export default function EditPet(props) {
         color: ''
     });
 
-    console.log(formData)
     const { pet_id } = useParams();
     const { updatePet, pets } = props;
 

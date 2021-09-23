@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import "./Card.css"
 
 export default function CardHome(props) {
-    const { setService, appointments } = props;
+    const { setService, appointments, currentUser } = props;
+
+    const zipcodes = require('zipcodes');
+    const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
 
     return (
         <div className="div-cardhome">
             <div>
-                Location
-                {/* {users.location} */}
+                Find services in: {location.zip}
             </div>
             <Link to='/users/location'>Change Location</Link>
             <div>

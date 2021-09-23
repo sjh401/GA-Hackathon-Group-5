@@ -4,24 +4,32 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 import CreatePet from "../screens/pet/CreatePet"
 import EditPet from "../screens/pet/EditPet"
 import UpdateUser from "../screens/user/UpdateUser";
-// import Businesses from "../screens/nearby/Businesses";
 
-import { getAppointment, getAppointments, postAppointment, getAllAppointments, putAppointment, deleteAppointment, getAllBoarding, getAllGroomers, getAllVets } from "../services/appointment";
-import { updateUser } from "../services/auth"
+import { 
+    // getAppointment, getAppointments, 
+    postAppointment, getAllAppointments, 
+    // putAppointment, deleteAppointment, 
+    getAllBoarding, getAllGroomers, getAllVets 
+} from "../services/appointment";
 import Schedule from "../screens/schedule/Schedule"
 import Home from '../screens/home/Home';
 import Services from '../screens/services/Services';
 import UserAccount from '../screens/user/UserAccount';
 import Appointments from '../screens/appointments/Appointments';
-import { getPets, getPet, postPet, putPet, deletePet } from "../services/pet"
-import Boarding from "../screens/nearby/Boarding";
+import { 
+    getPets, 
+    // getPet, 
+    postPet, putPet, 
+    // deletePet 
+} from "../services/pet"
+
 
 
 export default function Container(props) {
     const [pets, setPets] = useState([])
-    const [pet, setPet] = useState("")
+    // const [pet, setPet] = useState("")
     const [appointments, setAppointments] = useState([])
-    const [appointment, setAppointment] = useState("")
+    // const [appointment, setAppointment] = useState("")
     const [grooming, setGrooming] = useState([])
     const [vet, setVets] = useState([])
     const [boarding, setBoarding] = useState([])
@@ -31,7 +39,6 @@ export default function Container(props) {
     useEffect(() => {
         const fetchPets = async () => { 
             const fetchedPets = await getPets();
-            console.log(fetchedPets)
             setPets(fetchedPets)
         }
         fetchPets();
@@ -97,23 +104,24 @@ export default function Container(props) {
     const updateUser = async (updatedItem, user_id) => {
         const updatedUser = await updateUser(user_id, updatedItem)
         history.push('/account')
+        return updatedUser
     }
 
-    const updateAppointment = async (updatedItem, appointment_id) => {
-        const updatedAppointment = await putAppointment(updatedItem, appointment_id)
-        setAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
-            return appointment._id === appointment_id ? updatedAppointment : appointment
-        }))
-    }
+    // const updateAppointment = async (updatedItem, appointment_id) => {
+    //     const updatedAppointment = await putAppointment(updatedItem, appointment_id)
+    //     setAppointments(prevAppointmentData => prevAppointmentData.map(appointment => {
+    //         return appointment._id === appointment_id ? updatedAppointment : appointment
+    //     }))
+    // }
 
-    const removePet = async (pet_id) => {
-        await deletePet(pet_id)
-        setPets(prevPetData => prevPetData.filter(pet => pet._id !== pet_id))
-    }
-    const removeAppointment = async (appointment_id) => {
-        await deleteAppointment(appointment_id)
-        setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment._id !== appointment_id))
-    }
+    // const removePet = async (pet_id) => {
+    //     await deletePet(pet_id)
+    //     setPets(prevPetData => prevPetData.filter(pet => pet._id !== pet_id))
+    // }
+    // const removeAppointment = async (appointment_id) => {
+    //     await deleteAppointment(appointment_id)
+    //     setAppointments(prevAppointmentData => prevAppointmentData.filter(appointment => appointment._id !== appointment_id))
+    // }
 
     return (
         <>

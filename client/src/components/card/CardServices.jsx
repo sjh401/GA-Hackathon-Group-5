@@ -7,10 +7,8 @@ export default function CardServices(props) {
     return (
         <div className="div-column">
             <Link to="/schedule">
-            <div className="hover">mapping</div>
+            <div className="hover">Add Appointment</div>
             </Link>
-            <div className="hover">through</div>
-            <div className="hover">providers</div>
         </div>
     )
 }
