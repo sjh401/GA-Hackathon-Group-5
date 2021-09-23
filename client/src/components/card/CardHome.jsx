@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import "./Card.css"
 
 export default function CardHome(props) {
-    const { service, setService } = props;
+    const { setService } = props;
 
     return (
         <div className="div-cardhome">

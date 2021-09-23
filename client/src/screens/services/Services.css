@@ -2,3 +2,8 @@
     margin: 0 0 10vh 0;
     /* height: 90vh; */
 }
+.services-filter {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}

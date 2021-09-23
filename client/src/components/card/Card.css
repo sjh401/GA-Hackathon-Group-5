@@ -1,3 +1,15 @@
+.div-sign {
+    display: flex;
+    justify-content: space-evenly;
+    /* align-self: flex-start; */
+    flex-flow: column;
+    height: 50vh;
+}
+.link-noformat {
+    text-decoration: none;
+    color: black;
+}
+
 .h3-cardhome {
     text-align: left;
     margin: 10px 0 0 10px;
