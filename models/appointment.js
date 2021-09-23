@@ -15,6 +15,9 @@ const AppointmentSchema = new Schema(
       type: Array,
       require: true,
     },
+    service: {
+      type: String
+    },
     appointment_holder: { type: Schema.Types.ObjectId, ref: "Pet" },
   },
   { timestamps: true }

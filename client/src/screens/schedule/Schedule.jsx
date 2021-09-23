@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
 import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import './Schedule.css'
 import ScheduleGroomers from '../../components/schedule/ScheduleGroomers';
@@ -15,17 +19,60 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
     backgroundColor: '#ff7777',
     fontFamily: 'Poppins, sans-serif',
     width: '60vw',
-    maxWidth: 400,
+    maxWidth: 194,
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },
 }));
 
+const useStyles = makeStyles((theme) => ({
+    text: {
+        width: '60vw',
+        maxWidth: 194,
+        textDecoration: 'none',
+        margin: 5,
+    },
+}));
+
 export default function Schedule(props) {
+    const { service, currentUser, pets, addAppointment } = props;
+    const zipcodes = require('zipcodes');
+    const userLocation = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
+
     const [ toggle, setToggle ] = useState(false);
+    const [ userPets, setUserPets ] = useState();
+    const [ formData, setFormData ] = useState({
+        name: '',
+        date: '',
+        location: userLocation.zip,
+        appointment_holder: '',
+        service: ''
+    });
+
+    console.log(formData)
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
     
-    const { service, currentUser } = props;
-    
+    useEffect(() =>{
+        setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
+    },[currentUser, pets]);
+
+    const { name, date, appointment_holder } = formData
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [name]: value
+        }))
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
     let showComponent = ""
     if (service === "Grooming") {
         showComponent =  <ScheduleGroomers />
@@ -45,45 +92,77 @@ export default function Schedule(props) {
                 <div>
                     {showComponent}
                 </div>
-                <div>
-                    <div className="services-inputs">
-                        <h3>Date</h3>  
-                        <select>Select Month
-                            <option>
-                                months
-                            </option>
-                        </select>
-                    </div>
-                    <div className="services-inputs">
-                        <div>9</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                        <div>13</div>
-                        <div>14</div>
-                        <div>15</div>
-                        <div>16</div>
-                    </div>
-                </div>
-                <div>
-                    <h3>Time</h3>  
-                    <div className="services-inputs">
-                        <div>9</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
-                    </div>
-                </div>
+                <form 
+            className="pet-create"
+            onSubmit={(e) => {
+            e.preventDefault()
+            addAppointment(formData)
+            }}>
+            <h2 className="pet-create">Add a pet</h2>
+            <br/>
+            <TextField 
+                required 
+                id="outlined-basic" 
+                label="Name"
+                name="name"
+                variant="outlined" 
+                value={name}
+                onChange={handleChange}/>
+            <br/>
+            <TextField 
+                required 
+                id="outlined-basic" 
+                type="date"
+                label="Date" 
+                name="date"
+                variant="outlined"
+                value={date}
+                onChange={handleChange} />
+            <br/>
+            <Select
+                className={classes.text}
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                open={open}
+                onClose={handleClose}
+                onOpen={handleOpen}
+                name="appointment_holder"
+                value={appointment_holder}
+                onChange={handleChange}
+            >
+                <MenuItem id="All" ><em>Cuisine</em></MenuItem>
+                {userPets ? userPets.map(pet => {
+                    return (<MenuItem value={`${pet._id}`} key={pet._id}><em>{pet.name}</em></MenuItem>)
+                }): ""}
+            </Select>
+            <br/>
+            {/* <TextField 
+                required 
+                id="outlined-basic" 
+                label="Location"
+                name="location"
+                variant="outlined" 
+                value={location}
+                onChange={handleChange}/>
+            <br/> */}
+            <TextField 
+                required 
+                id="outlined-basic" 
+                label="Service"
+                name="service"
+                variant="outlined" 
+                value={formData.service}
+                onChange={handleChange}/>
+            <br/>
+            <div>
                 <PrimaryButton 
                     type="submit"
                     onClick={(e)=> setToggle(prevToggle => !prevToggle)}
                 >
                     Book Appointment
                 </PrimaryButton>
+            </div>
+        </form>
             </div>
             <div 
                 className={(toggle === false) ? "none": "div-schedule-hidden"}
