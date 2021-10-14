@@ -16,7 +16,6 @@ import restrict from "../helpers/restrict.js";
 
 const router = Router();
 
-
 router.get("/appointments", getAllAppointments);
 router.get("/appointments/:petID", getAppointments);
 router.get("/appointment/:id", getAppointment);
