@@ -19,7 +19,7 @@ export default function CardHome(props) {
         }else {
             setUserAppointments([])
         }
-    },[currentUser, pets]);
+    },[currentUser, pets, appointments]);
 
 
     return (
