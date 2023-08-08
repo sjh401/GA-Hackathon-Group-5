@@ -35,7 +35,7 @@ export const deletePet = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(req.user);
     const pet = await Pet.findByIdAndDelete(id);
-    user.pets = user.pets.filter((pet) => pet != id);
+    user.pets = user.pets?.filter((pet) => pet != id);
     user.save();
     res.send(pet);
   } catch (e) {

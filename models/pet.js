@@ -6,6 +6,12 @@ const PetSchema = new Schema(
     name: {
       type: String,
       required: true,
+    },    
+    animalType: {
+      type: String,
+    },    
+    breed: {
+      type: String,
     },
     sex: {
       type: String,

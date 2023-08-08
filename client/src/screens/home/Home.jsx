@@ -9,9 +9,9 @@ export default function Home(props) {
     const [ userPets, setUserPets ] = useState();
 
     useEffect(() =>{
-        if(pets) {
+        // if(pets) {
         setUserPets(pets?.filter(pet => pet.owner === currentUser?.userId))
-        }
+        // }
     },[currentUser, pets]);
 
     return (

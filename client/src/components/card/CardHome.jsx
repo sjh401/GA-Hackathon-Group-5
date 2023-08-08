@@ -9,18 +9,19 @@ export default function CardHome(props) {
 
     const zipcodes = require('zipcodes');
     const location = zipcodes.lookupByCoords(currentUser?.location.latitude, currentUser?.location.longitude);
+    const userPets = pets?.map(pet => {return pet._id});
 
     useEffect(() =>{
         if(pets?.length){
-            setUserAppointments(appointments
-                // pets?.find(pet => 
-                // appointment.appoitnment_holder === currentUser?.userId)
+            setUserAppointments(
+                appointments?.filter(appointment => {
+                    return userPets.indexOf(appointment.appointment_holder) > -1
+                })
                 )
         }else {
             setUserAppointments([])
         }
     },[currentUser, pets, appointments]);
-
 
     return (
         <div className="div-cardhome">

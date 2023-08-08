@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { useState } from 'react';
 
 
 const PrimaryButton = styled(Button)(({ theme }) => ({
@@ -9,15 +10,25 @@ const PrimaryButton = styled(Button)(({ theme }) => ({
     fontFamily: 'Poppins, sans-serif',
     width: '60vw',
     maxWidth: 194,
+    marginTop: 10,
     '&:hover': {
         backgroundColor: '#4fa8fc',
     },
 }));
 
+const PrimaryTextField = styled(TextField)(({ theme }) => ({
+    margin: 10,
+}))
+
 export default function SignUpForm(props) {
+    const [ passwordConfirmation, setPasswordConfirmation ] = useState("")
 
+    const handlePassVerification = (e) => {
+        const { value } = e.target;
+        setPasswordConfirmation(value)
+    }
     const { handleRegister, handleChange, username, password, email, location, formData } = props;
-
+    const regex = /^[0-9]*$/;
     return (
         <form 
             className="login-form"
@@ -27,17 +38,23 @@ export default function SignUpForm(props) {
             }}>
             <h2 className="login-register">Register</h2>
             <br/>
-            <TextField 
+            <PrimaryTextField 
                 required 
-                id="outlined-basic" 
+                error={(username && username.length < 9 )? true : false}
+                id="outlined-basic"
                 label="Username"
                 name="username"
-                variant="outlined" 
+                variant="outlined"
                 value={username}
                 onChange={handleChange}/>
             <br/>
-            <TextField 
+            <PrimaryTextField 
                 required 
+                error={(
+                    email.length < 1 || (
+                    email.includes("@") &&
+                    email.includes(".")
+                    ))? false : true}
                 id="outlined-basic" 
                 type="email"
                 label="Email" 
@@ -46,8 +63,14 @@ export default function SignUpForm(props) {
                 value={email}
                 onChange={handleChange} />
             <br/>
-            <TextField 
+            <PrimaryTextField 
                 required 
+                error={(
+                    (passwordConfirmation.length > 0 &&
+                    password.length > 0) &&
+                    (password.length < 6 ||
+                    password !== passwordConfirmation)
+                    )? true : false}
                 id="outlined-basic" 
                 type="password"
                 label="Password" 
@@ -56,10 +79,30 @@ export default function SignUpForm(props) {
                 value={password}
                 onChange={handleChange} />
             <br/>
-            <TextField 
+            <PrimaryTextField 
                 required 
+                error={(
+                    passwordConfirmation.length > 0 &&
+                    password.length > 0 &&
+                    password !== passwordConfirmation
+                    )? true : false}
                 id="outlined-basic" 
-                type="location"
+                type="password"
+                label="Password Confirmation" 
+                name="passwordConfirmation"
+                variant="outlined"
+                value={passwordConfirmation}
+                onChange={handlePassVerification}/>
+            <br/>
+            <PrimaryTextField 
+                required 
+                error ={(
+                    location &&
+                    (location.length !== 5 ||
+                    location.search(regex) < 0)
+                    )? true: false}
+                id="outlined-basic" 
+                type="text"
                 label="Location" 
                 name="location"
                 variant="outlined"

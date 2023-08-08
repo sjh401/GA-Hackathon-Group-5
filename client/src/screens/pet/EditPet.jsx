@@ -28,7 +28,7 @@ export default function EditPet(props) {
     const { pet_id } = useParams();
     const { updatePet, pets } = props;
 
-    const { name, sex, weight, color } = formData
+    const { name, sex, weight, color, animalType } = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -70,6 +70,15 @@ export default function EditPet(props) {
                 name="name"
                 variant="outlined" 
                 value={name}
+                onChange={handleChange}/>
+            <br/>
+            <TextField 
+                required 
+                id="outlined-basic" 
+                label="Name"
+                name="name"
+                variant="outlined" 
+                value={animalType}
                 onChange={handleChange}/>
             <br/>
             <TextField 

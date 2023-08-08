@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { SchemaTypes } from 'mongoose';
 
 
 const PrimaryButton = styled(Button)(({ theme }) => ({
@@ -26,7 +27,7 @@ export default function CreatePet(props) {
 
     const { addPet } = props;
 
-    const { name, sex, weight, color } = formData
+    const { name, sex, weight, color, animalType } = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,6 +55,16 @@ export default function CreatePet(props) {
                 variant="outlined" 
                 value={name}
                 onChange={handleChange}/>
+            <br/>
+            <TextField 
+                required 
+                id="outlined-basic" 
+                type="text"
+                label="Sex" 
+                name="sex"
+                variant="outlined"
+                value={animalType}
+                onChange={handleChange} />
             <br/>
             <TextField 
                 required 

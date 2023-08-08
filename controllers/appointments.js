@@ -62,7 +62,7 @@ export const deleteAppointment = async (req, res) => {
   try {
     const { id, petID } = req.params;
     let pet = await Pet.findById(petID);
-    pet.appointments = pet.appointments.filter(
+    pet.appointments = pet.appointments?.filter(
       (appointment) => appointment != id
     );
     const appointment = await Appointment.findByIdAndDelete(id);
